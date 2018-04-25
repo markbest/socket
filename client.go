@@ -10,7 +10,7 @@ import (
 func sender(conn net.Conn) {
 	fmt.Println("connect success")
 	for i := 0; i < 100; i++ {
-		words := "{\"Id\":1,\"Name\":\"golang\",\"Message\":\"message\"}"
+		words := `{"Id":1,"Name":"golang","Message":"message"}`
 		conn.Write(protocol.Packet([]byte(words)))
 	}
 	fmt.Println("send over")

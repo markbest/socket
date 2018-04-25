@@ -11,12 +11,12 @@ const (
 	ConstSaveDataLength = 4
 )
 
-//封包
+//packet
 func Packet(message []byte) []byte {
 	return append(append([]byte(ConstHeader), IntToBytes(len(message))...), message...)
 }
 
-//解包
+//unpack
 func Unpack(buffer []byte, readerChannel chan []byte) []byte {
 	length := len(buffer)
 
@@ -43,7 +43,7 @@ func Unpack(buffer []byte, readerChannel chan []byte) []byte {
 	return buffer[i:]
 }
 
-//整形转换成字节
+//int to bytes
 func IntToBytes(n int) []byte {
 	x := int32(n)
 	bytesBuffer := bytes.NewBuffer([]byte{})
@@ -51,7 +51,7 @@ func IntToBytes(n int) []byte {
 	return bytesBuffer.Bytes()
 }
 
-//字节转换成整形
+//bytes to int
 func BytesToInt(b []byte) int {
 	var x int32
 	bytesBuffer := bytes.NewBuffer(b)
